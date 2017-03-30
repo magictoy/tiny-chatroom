@@ -14,9 +14,9 @@ wss.on('connection', function(ws) {
 
     ws.on('message', function(message) {
         var objMessage = JSON.parse(message);
-        var strType  = objMessage['type'];
+        var messageType  = objMessage['type'];
 
-        switch(strType) {
+        switch(messageType) {
             case 'online' : 
                 userConnectionMap.set(objMessage['user'], ws);
                 console.log(objMessage['user']+' is online')
