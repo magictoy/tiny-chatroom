@@ -1,0 +1,19 @@
+<html>
+<body>
+<div id="chat"></div>
+</body>
+</html>
+<script>
+var ws = new WebSocket('ws://localhost:8080/');
+
+ws.onopen = function(){
+	var json = '{"type":"online","user":"U1"}';
+	ws.send(json);
+};
+
+ws.onmessage = function(event){
+	var span = document.createElement('span');
+	span.innerHTML = event.data+'<br>';
+    document.getElementById('chat').appendChild(span);
+}
+</script>

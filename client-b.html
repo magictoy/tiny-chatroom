@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+var ws = new WebSocket('ws://localhost:8080/');
+
+ws.onopen = function(){
+	var json = '{"type":"online","user":"U2"}';
+	ws.send(json);
+};
+
+var sendMessage = function (message) {
+	var json = '{"type":"send","to":"U1","message":"'+message+'"}';
+	ws.send(json);
+}
+</script>
+</head>
+
+<body>
+<input type="text" id="text" placeholder="type something...">
+<button onclick="sendMessage(document.getElementById('text').value)">SEND</button>
+</body>
+
+</html>
